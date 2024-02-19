@@ -1,0 +1,6 @@
+openai
+retry
+diskcache
+matplotlib
+python-slugify
+pandas
