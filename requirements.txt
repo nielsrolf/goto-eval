@@ -1,6 +1,12 @@
 openai
-retry
+anthropic
+google-generativeai
+backoff
 diskcache
 matplotlib
 python-slugify
 pandas
+jupyterlab-widgets
+ipywidgets
+python-dotenv
+tabulate
