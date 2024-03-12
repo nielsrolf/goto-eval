@@ -5,37 +5,37 @@
 **Prompt**
 
 ```
-0: goto 4
-1: return 1
-2: goto 9
-3: goto 5
-4: goto 24
-5: return 6
-6: goto 7
-7: goto 25
-8: return 3
-9: return 2
-10: return 5
-11: goto 12
-12: goto 10
-13: goto 28
-14: goto 18
-15: goto 3
-16: goto 21
-17: goto 29
-18: return 7
-19: goto 14
-20: goto 1
-21: goto 23
-22: return 4
-23: return 0
-24: return 8
-25: return 9
-26: goto 2
-27: goto 20
-28: goto 22
-29: goto 8
-What is the final value if you start with goto 11?
+0: goto 12
+1: goto 21
+2: goto 10
+3: return 9
+4: goto 3
+5: return 8
+6: goto 27
+7: goto 9
+8: return 7
+9: return 1
+10: return 0
+11: return 6
+12: goto 25
+13: goto 2
+14: goto 4
+15: goto 5
+16: goto 7
+17: goto 15
+18: goto 28
+19: goto 11
+20: goto 24
+21: return 2
+22: goto 19
+23: goto 6
+24: return 4
+25: return 3
+26: goto 1
+27: return 5
+28: goto 8
+29: goto 20
+What is the final value if you start with goto 23?
 Think step by step. Then, return your answer in the format: 'Answer: <int>'.
 ```
 

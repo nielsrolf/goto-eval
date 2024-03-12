@@ -63,7 +63,7 @@ class Experiment():
         if verbose:
             print("# Prompt\n" + prompt)
             print("# Response\n" + response)
-        rating = self.eval_single_example(answer, response)
+        rating = self.eval_single_example(answer, response.strip())
         if rating == 'invalid' and self.invalid.get(agent.name) is None:
             self.invalid[agent.name] = {
                 'prompt': prompt,

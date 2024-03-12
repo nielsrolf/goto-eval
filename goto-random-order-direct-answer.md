@@ -5,43 +5,43 @@
 **Prompt**
 
 ```
-0: return 3
-1: goto 20
-2: goto 15
-3: goto 21
-4: goto 10
-5: goto 23
-6: return 6
+0: goto 24
+1: return 1
+2: return 4
+3: return 7
+4: goto 14
+5: goto 3
+6: goto 13
 7: goto 12
-8: return 0
-9: return 7
-10: return 9
-11: return 5
+8: goto 20
+9: goto 5
+10: goto 1
+11: goto 4
 12: return 2
-13: goto 28
-14: goto 5
-15: goto 0
-16: goto 11
-17: goto 18
-18: goto 27
-19: goto 16
-20: return 8
-21: goto 8
-22: goto 9
-23: return 1
-24: goto 22
-25: goto 1
-26: goto 4
-27: return 4
-28: goto 6
-29: goto 7
-What is the final value if you start with goto 2?
+13: goto 15
+14: return 6
+15: return 9
+16: goto 18
+17: goto 25
+18: return 5
+19: goto 29
+20: goto 22
+21: goto 16
+22: return 3
+23: goto 0
+24: return 0
+25: goto 2
+26: goto 10
+27: return 8
+28: goto 7
+29: goto 27
+What is the final value if you start with goto 11?
 Answer in one word, don't think step by step.
 ```
 
 **Answer**
 
-3
+6
 
 ## Results
 
@@ -105,7 +105,7 @@ Answer in one word, don't think step by step.
 | gpt-4-turbo-preview @ T=0                            |      9 |         1 |         0 |           9 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0           |      2 |         0 |         4 |           6 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0           |      3 |         0 |         1 |           9 |           10 |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0           |      4 |         0 |         3 |           7 |           10 |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0           |      4 |         1 |         2 |           7 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0           |      5 |         0 |         2 |           8 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0           |      6 |         0 |         2 |           8 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0           |      7 |         0 |         0 |          10 |           10 |
@@ -135,11 +135,11 @@ Answer in one word, don't think step by step.
 | gpt-4-turbo-preview @ T=0 (fewshot)                  |      7 |         0 |         0 |          10 |           10 |
 | gpt-4-turbo-preview @ T=0 (fewshot)                  |      8 |         0 |         0 |          10 |           10 |
 | gpt-4-turbo-preview @ T=0 (fewshot)                  |      9 |         1 |         0 |           9 |           10 |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      2 |         0 |         7 |           3 |           10 |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      3 |         0 |         4 |           6 |           10 |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      4 |         0 |         4 |           6 |           10 |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      5 |         0 |         1 |           9 |           10 |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      6 |         0 |         3 |           7 |           10 |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      2 |         8 |         0 |           2 |           10 |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      3 |         4 |         0 |           6 |           10 |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      4 |         4 |         0 |           6 |           10 |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      5 |         1 |         0 |           9 |           10 |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      6 |         1 |         2 |           7 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      7 |         0 |         0 |          10 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      8 |         0 |         0 |          10 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 (fewshot) |      9 |         0 |         1 |           9 |           10 |
@@ -853,38 +853,77 @@ Answer in one word, don't think step by step.
 **Prompt**
 
 ```
-0: return 7
-1: goto 8
-2: goto 0
-3: goto 16
-4: return 5
-5: return 3
-6: goto 10
-7: return 2
-8: return 1
-9: return 4
-10: return 9
-11: goto 9
-12: goto 13
-13: return 0
-14: goto 15
-15: return 8
-16: return 6
-17: goto 5
-18: goto 4
-19: goto 7
-What is the final value if you start with goto 1?
+0: goto 20
+1: goto 31
+2: goto 43
+3: goto 29
+4: goto 11
+5: goto 10
+6: goto 30
+7: return 4
+8: goto 26
+9: goto 52
+10: goto 42
+11: goto 8
+12: goto 57
+13: goto 34
+14: goto 2
+15: goto 55
+16: goto 47
+17: goto 51
+18: goto 36
+19: goto 23
+20: goto 40
+21: goto 33
+22: goto 50
+23: goto 18
+24: goto 0
+25: goto 12
+26: return 2
+27: goto 7
+28: goto 3
+29: return 9
+30: goto 28
+31: return 1
+32: goto 54
+33: goto 48
+34: goto 37
+35: goto 1
+36: return 8
+37: return 7
+38: goto 6
+39: goto 16
+40: goto 27
+41: goto 21
+42: goto 46
+43: goto 13
+44: return 0
+45: goto 35
+46: goto 32
+47: goto 22
+48: goto 9
+49: goto 25
+50: goto 44
+51: goto 4
+52: return 3
+53: goto 45
+54: return 6
+55: goto 19
+56: goto 49
+57: return 5
+58: goto 56
+59: goto 53
+What is the final value if you start with goto 24?
 Answer in one word, don't think step by step.
 ```
 
 **Response (invalid)**
 
 ```
- 1 
-(Since the program loops indefinitely between labels 1 and 8, returning 1 and then going back to 8 which returns 1 again, the final value will always be 1.)
+ The final value if you start with goto 24 is 5. This is because the program loops back to itself with goto 24, 49, 56, 53, and finally 57, which returns 5.
 ```
 
 **Expected answer**
 
-1
+4
 
