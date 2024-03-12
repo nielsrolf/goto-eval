@@ -330,8 +330,15 @@ class Experiment2(Experiment1):
         if not 'answer: ' in response:
             return 'incorrect'
         response = response.split('answer: ')[1]
-        response = response.replace(".", " ")
-        if response.split(" ")[0] == answer:
+        
+        match = re.search(r'\d+', response)
+        # Check if a match was found
+        if match:
+            first_number = match.group()
+        else:
+            first_number = None
+        
+        if first_number == answer:
             return 'correct'
         if (answer + " ") in response:
             return 'invalid'
@@ -380,12 +387,12 @@ class Experiment3(Experiment1):
             response = response.replace(word, str(numeric))
         
         match = re.search(r'\d+', response)
-
         # Check if a match was found
         if match:
             first_number = int(match.group())
         else:
             first_number = None
+            
         if first_number == answer:
             return 'correct'
         else:

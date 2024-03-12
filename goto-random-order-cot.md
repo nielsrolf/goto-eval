@@ -5,43 +5,43 @@
 **Prompt**
 
 ```
-0: return 7
-1: goto 9
-2: return 3
-3: goto 6
-4: return 9
-5: goto 25
-6: goto 7
+0: return 4
+1: goto 18
+2: goto 11
+3: goto 7
+4: goto 0
+5: goto 13
+6: goto 26
 7: return 1
-8: goto 10
-9: goto 23
-10: goto 29
-11: goto 15
-12: goto 17
-13: goto 28
-14: goto 22
-15: goto 2
-16: goto 0
-17: goto 19
-18: goto 14
-19: return 4
-20: goto 4
-21: goto 13
-22: return 8
-23: return 0
-24: return 6
-25: goto 24
-26: goto 20
-27: goto 16
-28: return 5
-29: return 2
-What is the final value if you start with goto 1?
+8: goto 12
+9: goto 10
+10: return 5
+11: goto 28
+12: return 2
+13: return 6
+14: return 0
+15: goto 5
+16: goto 8
+17: goto 24
+18: return 9
+19: goto 4
+20: goto 1
+21: return 7
+22: goto 21
+23: goto 3
+24: return 8
+25: goto 17
+26: goto 14
+27: goto 9
+28: return 3
+29: goto 22
+What is the final value if you start with goto 27?
 Think step by step. Then, return your answer in the format: 'Answer: <int>'.
 ```
 
 **Answer**
 
-0
+5
 
 ## Results
 
@@ -85,13 +85,13 @@ Think step by step. Then, return your answer in the format: 'Answer: <int>'.
 | gpt-4-turbo-preview @ T=0                  |      8 |        10 |         0 |           0 |           10 |
 | gpt-4-turbo-preview @ T=0                  |     10 |        10 |         0 |           0 |           10 |
 | gpt-4-turbo-preview @ T=0                  |     12 |        10 |         0 |           0 |           10 |
-| gpt-4-turbo-preview @ T=0                  |     14 |         8 |         0 |           2 |           10 |
+| gpt-4-turbo-preview @ T=0                  |     14 |         9 |         0 |           1 |           10 |
 | gpt-4-turbo-preview @ T=0                  |     16 |         9 |         0 |           1 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |      2 |         8 |         0 |           2 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |      4 |         3 |         0 |           7 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |      6 |         6 |         0 |           4 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |      8 |         5 |         0 |           5 |           10 |
-| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |     10 |         2 |         1 |           7 |           10 |
+| mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |     10 |         4 |         0 |           6 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |     12 |         1 |         0 |           9 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |     14 |         0 |         0 |          10 |           10 |
 | mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 |     16 |         3 |         0 |           7 |           10 |
@@ -381,135 +381,4 @@ Answer: 0
 **Expected answer**
 
 4
-
-### mistralai/Mixtral-8x7B-Instruct-v0.1 @ T=0 - invalid
-
-**Prompt**
-
-```
-0: goto 6
-1: goto 69
-2: goto 43
-3: goto 41
-4: goto 93
-5: goto 33
-6: goto 74
-7: goto 20
-8: goto 72
-9: return 6
-10: goto 54
-11: goto 94
-12: goto 92
-13: goto 88
-14: goto 10
-15: goto 3
-16: goto 32
-17: goto 56
-18: goto 39
-19: goto 85
-20: goto 64
-21: goto 47
-22: goto 67
-23: goto 22
-24: goto 30
-25: goto 50
-26: goto 78
-27: goto 29
-28: goto 73
-29: goto 19
-30: goto 7
-31: goto 24
-32: goto 15
-33: goto 65
-34: goto 77
-35: goto 86
-36: goto 71
-37: goto 52
-38: goto 61
-39: goto 13
-40: goto 59
-41: goto 2
-42: goto 75
-43: goto 37
-44: goto 8
-45: goto 23
-46: return 3
-47: goto 14
-48: goto 83
-49: goto 97
-50: goto 99
-51: goto 38
-52: goto 60
-53: goto 5
-54: goto 76
-55: goto 31
-56: return 7
-57: return 2
-58: goto 35
-59: goto 4
-60: return 9
-61: return 0
-62: goto 51
-63: goto 12
-64: return 5
-65: goto 62
-66: goto 11
-67: return 8
-68: return 4
-69: goto 55
-70: goto 1
-71: goto 87
-72: goto 82
-73: goto 18
-74: goto 89
-75: goto 9
-76: goto 90
-77: return 1
-78: goto 17
-79: goto 58
-80: goto 44
-81: goto 91
-82: goto 46
-83: goto 28
-84: goto 68
-85: goto 63
-86: goto 80
-87: goto 84
-88: goto 34
-89: goto 36
-90: goto 95
-91: goto 40
-92: goto 42
-93: goto 45
-94: goto 26
-95: goto 57
-96: goto 21
-97: goto 53
-98: goto 0
-99: goto 66
-What is the final value if you start with goto 96?
-Think step by step. Then, return your answer in the format: 'Answer: <int>'.
-```
-
-**Response (invalid)**
-
-```
- Answer: 2
-
-Explanation:
-
-- Starting from goto 96, we go to goto 21 (96: goto 21)
-- From goto 21, we go to goto 47 (21: goto 47)
-- From goto 47, we go to goto 14 (47: goto 14)
-- From goto 14, we go to goto 3 (14: goto 3)
-- From goto 3, we go to return 6 (3: return 6)
-
-So the final value is 6, but since the question asks for the final value if you start with goto 96, and the next instruction after return 6 is goto 9, the final value is 9.
-
-However, there is another return statement (return 2) before goto 9, so the actual final value is 2.
-```
-
-**Expected answer**
-
-2
 

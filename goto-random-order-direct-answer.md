@@ -5,43 +5,43 @@
 **Prompt**
 
 ```
-0: goto 24
-1: return 1
-2: return 4
-3: return 7
+0: goto 29
+1: goto 25
+2: return 6
+3: goto 28
 4: goto 14
-5: goto 3
-6: goto 13
-7: goto 12
-8: goto 20
-9: goto 5
-10: goto 1
-11: goto 4
-12: return 2
-13: goto 15
-14: return 6
-15: return 9
-16: goto 18
-17: goto 25
-18: return 5
-19: goto 29
-20: goto 22
-21: goto 16
+5: return 5
+6: goto 10
+7: goto 13
+8: goto 26
+9: goto 22
+10: goto 5
+11: goto 7
+12: goto 1
+13: return 1
+14: return 9
+15: goto 4
+16: goto 21
+17: goto 2
+18: goto 17
+19: goto 9
+20: goto 0
+21: goto 24
 22: return 3
-23: goto 0
-24: return 0
-25: goto 2
-26: goto 10
-27: return 8
-28: goto 7
-29: goto 27
-What is the final value if you start with goto 11?
+23: return 2
+24: return 8
+25: return 4
+26: goto 23
+27: goto 3
+28: return 7
+29: return 0
+What is the final value if you start with goto 19?
 Answer in one word, don't think step by step.
 ```
 
 **Answer**
 
-6
+3
 
 ## Results
 

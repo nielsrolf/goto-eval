@@ -5,43 +5,43 @@
 **Prompt**
 
 ```
-0: goto 19
-1: goto 15
-2: goto 27
-3: goto 7
-4: goto 0
-5: return 6
-6: goto 20
-7: return 0
-8: return 1
-9: goto 13
-10: goto 22
-11: return 2
-12: return 4
-13: goto 29
-14: goto 17
-15: return 7
-16: goto 14
-17: return 3
-18: goto 2
-19: return 8
-20: goto 5
-21: goto 11
-22: goto 8
-23: goto 24
-24: goto 12
-25: goto 1
-26: goto 21
-27: return 5
-28: goto 3
-29: return 9
-What is the final value if you start with goto 18?
-You can think step by step (this usually helps at arriving at the correct value), but the first number in your response will be interpreted as your final answer. Therefore, you cannot mention the line numbers on the path to the final value - or you have to use nicknames for numbers. It is also important that you don't say stuff like 'If you start with goto 18, then ...' - because then the parsed answer will just be '18'.
+0: goto 8
+1: return 4
+2: return 7
+3: goto 11
+4: goto 17
+5: goto 23
+6: goto 14
+7: goto 3
+8: goto 25
+9: return 5
+10: return 3
+11: return 0
+12: goto 27
+13: return 8
+14: goto 16
+15: return 9
+16: return 6
+17: goto 13
+18: goto 1
+19: goto 10
+20: goto 2
+21: goto 15
+22: goto 21
+23: goto 26
+24: goto 20
+25: return 2
+26: return 1
+27: goto 9
+28: goto 18
+29: goto 19
+What is the final value if you start with goto 29?
+You can think step by step (this usually helps at arriving at the correct value), but the first number in your response will be interpreted as your final answer. Therefore, you cannot mention the line numbers on the path to the final value - or you have to use nicknames for numbers. It is also important that you don't say stuff like 'If you start with goto 29, then ...' - because then the parsed answer will just be '29'.
 ```
 
 **Answer**
 
-5
+3
 
 ## Results
 
