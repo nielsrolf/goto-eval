@@ -41,8 +41,8 @@ class Experiment():
         self.experiment_title = experiment_title or self.__class__.__name__
         self.n = n
         self.show_plots = show_plots
-        self.incorrect = {} # agent.name => {'prompt': str, 'response': str, 'answer': str}
-        self.invalid = {} # agent.name => {'prompt': str, 'response': str, 'answer': str}
+        self.incorrect = defaultdict(list) # agent.name => [{'prompt': str, 'response': str, 'answer': str}]
+        self.invalid = defaultdict(list) # agent.name => [{'prompt': str, 'response': str, 'answer': str}]
         self._report_path = report_path
         
     @property
@@ -64,18 +64,18 @@ class Experiment():
             print("# Prompt\n" + prompt)
             print("# Response\n" + response)
         rating = self.eval_single_example(answer, response.strip())
-        if rating == 'invalid' and self.invalid.get(agent.name) is None:
-            self.invalid[agent.name] = {
+        if rating == 'invalid':
+            self.invalid[agent.name] += [{
                 'prompt': prompt,
                 'answer': answer,
                 'response': response
-            }
-        if rating == 'incorrect' and self.incorrect.get(agent.name) is None:
-            self.incorrect[agent.name] = {
+            }]
+        if rating == 'incorrect':
+            self.incorrect[agent.name] += [{
                 'prompt': prompt,
                 'answer': answer,
                 'response': response
-            }
+            }]
         return rating
     
     def run_on_agent(self, agent, n=None, path_lengths=list(range(2, 10))):
@@ -111,22 +111,27 @@ class Experiment():
     def print_failures(self, agents):
         self.print("# Failures")
         for agent in agents:
-            incorrect = self.incorrect.get(agent.name)
-            invalid = self.invalid.get(agent.name)
-            if incorrect is not None:
+            incorrect = self.incorrect[agent.name]
+            invalid = self.invalid[agent.name]
+            for i in incorrect:
                 self.print(f"### {agent.name} - incorrect")
-                self.print_failure(incorrect, "incorrect")
-            if invalid is not None:
+                self.print_failure(i, "incorrect")
+            for i in invalid:
                 self.print(f"### {agent.name} - invalid")
-                self.print_failure(invalid, "invalid")
+                self.print_failure(i, "invalid")
     
     def print_failure(self, example, rating):
-        self.print(f"**Prompt**")
-        self.print("```\n" + example['prompt'] + "\n```")
-        self.print(f"**Response ({rating})**")
-        self.print("```\n" + example['response'] + "\n```")
-        self.print(f"**Expected answer**")
-        self.print(example['answer'])
+        try:
+            self.print(f"**Prompt**")
+            self.print("```\n" + example['prompt'] + "\n```")
+            self.print(f"**Response ({rating})**")
+            self.print("```\n" + example['response'] + "\n```")
+            self.print(f"**Expected answer**")
+            self.print(example['answer'])
+        except:
+            breakpoint()
+            print(example)
+            print(rating)
     
     def run_on_agents(self, agents, one_shot=True, few_shot=True, **run_on_agent_kwargs):
         if few_shot:
@@ -257,6 +262,7 @@ class Experiment1(Experiment):
         response = response.lower()
         for word, numeric in numbers.items():
             response = response.replace(word, str(numeric))
+        response = response.replace(".", " ").replace(",", " ")
         if response.split(" ")[0] == answer:
             return 'correct'
         if (answer + " ") in response:
@@ -323,7 +329,7 @@ class Experiment2(Experiment1):
             return prompt, str(end), cot
         return prompt, str(end)
     
-    def eval_single_example(self, answer, response):
+    def parse_answer(self, response):
         response = response.lower()
         for word, numeric in numbers.items():
             response = response.replace(word, str(numeric))
@@ -337,8 +343,11 @@ class Experiment2(Experiment1):
             first_number = match.group()
         else:
             first_number = None
-        
-        if first_number == answer:
+        return str(first_number)
+    
+    def eval_single_example(self, answer, response):
+        parsed = self.parse_answer(response)
+        if parsed == answer:
             return 'correct'
         if (answer + " ") in response:
             return 'invalid'
@@ -380,8 +389,7 @@ class Experiment3(Experiment1):
             return prompt, str(end), cot
         return prompt, str(end)
     
-    
-    def eval_single_example(self, answer, response):
+    def parse_answer(self, response):
         response = response.lower()
         for word, numeric in numbers.items():
             response = response.replace(word, str(numeric))
@@ -392,8 +400,11 @@ class Experiment3(Experiment1):
             first_number = int(match.group())
         else:
             first_number = None
-            
-        if first_number == answer:
+        return str(first_number)
+    
+    def eval_single_example(self, answer, response):
+        parsed = self.parse_answer(response) 
+        if parsed == answer:
             return 'correct'
         else:
             return 'incorrect'
@@ -401,6 +412,14 @@ class Experiment3(Experiment1):
     def run_on_agents(self, agents):
         super().run_on_agents(agents, few_shot=False)
 
+
+def test_experiment3_parsing():
+    experiment = Experiment3()
+    response = " Starting at line 1, we are directed to line 8, which returns 1. So, the final value is 1."
+    parsed = experiment.parse_answer(response)
+    assert parsed == '1'
+
+test_experiment3_parsing()
 
 # class Experiment4(Experiment1):
 #     def __init__(self, *args, **kwargs):
